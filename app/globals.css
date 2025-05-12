@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 173 70% 44%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 73% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 212 80% 20%;
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 173 70% 44%;
+
+    --radius: 0.5rem;
+
+    --chart-1: 173 70% 44%;
+    --chart-2: 210 73% 45%;
+    --chart-3: 212 80% 20%;
+    --chart-4: 316.6 73.2% 52.5%;
+    --chart-5: 47.9 95.8% 53.1%;
+  }
+
+  .dark {
+    --background: 212 80% 20%;
+    --foreground: 210 40% 98%;
+
+    --card: 212 80% 15%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 212 80% 20%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 173 70% 44%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 73% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 173 70% 44%;
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 212 80% 15%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 212 80% 15%;
+    --input: 212 80% 15%;
+    --ring: 173 70% 44%;
+
+    --chart-1: 173 70% 44%;
+    --chart-2: 210 73% 45%;
+    --chart-3: 212 80% 20%;
+    --chart-4: 316.6 73.2% 52.5%;
+    --chart-5: 47.9 95.8% 53.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Transiciones suaves para cambios de tema */
+:root {
+  --transition-duration: 0.3s;
+}
+
+html.transitioning * {
+  transition:
+    background-color var(--transition-duration) ease,
+    color var(--transition-duration) ease,
+    border-color var(--transition-duration) ease,
+    fill var(--transition-duration) ease,
+    stroke var(--transition-duration) ease !important;
+}
+
+/* Estilos para el componente de tutorial */
+.tutorial-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tutorial-spotlight {
+  position: absolute;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  z-index: 51;
+  pointer-events: none;
+}
+
+.tutorial-tooltip {
+  position: absolute;
+  z-index: 52;
+  max-width: 300px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mejoras de accesibilidad */
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Estilos para el modo de alto contraste */
+@media (forced-colors: active) {
+  .high-contrast-outline {
+    outline: 2px solid currentColor;
+  }
+}
+
+/* Estilos de accesibilidad */
+.high-contrast {
+  --background: #000000;
+  --foreground: #ffffff;
+  --primary: #22c0a8;
+  --primary-foreground: #000000;
+  --secondary: #1f71c5;
+  --secondary-foreground: #000000;
+  --accent: #0a305f;
+  --accent-foreground: #ffffff;
+  --border: #ffffff;
+}
+
+/* Transiciones suaves para cambios de tema */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
