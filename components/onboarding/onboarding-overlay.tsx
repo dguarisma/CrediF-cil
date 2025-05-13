@@ -101,7 +101,7 @@ export function OnboardingOverlay() {
                   <Button
                     onClick={skipOnboarding}
                     variant="ghost"
-                    className="text-sm text-gray-500 hover:text-gray-700"
+                    className="text-sm text-gray-500 hover:text-gray-800 hover:bg-gray-100"
                   >
                     Omitir por ahora
                   </Button>
@@ -138,7 +138,7 @@ export function OnboardingOverlay() {
                   <Button
                     onClick={skipOnboarding}
                     variant="ghost"
-                    className="text-sm text-gray-500 hover:text-gray-700"
+                    className="text-sm text-gray-500 hover:text-gray-800 hover:bg-gray-100"
                   >
                     Omitir por ahora
                   </Button>
@@ -196,7 +196,7 @@ export function OnboardingOverlay() {
                   <Button
                     onClick={skipOnboarding}
                     variant="ghost"
-                    className="text-sm text-gray-500 hover:text-gray-700"
+                    className="text-sm text-gray-500 hover:text-gray-800 hover:bg-gray-100"
                   >
                     Omitir por ahora
                   </Button>

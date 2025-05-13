@@ -20,15 +20,16 @@ export function LegalTabLinks({ className }: LegalTabLinksProps) {
   ]
 
   return (
-    <div className={cn("flex flex-wrap gap-2", className)}>
+    <div className={cn("flex flex-wrap gap-2 mb-4", className)}>
       {tabs.map((tab) => (
         <Link
           key={tab.id}
           href={`/legal?tab=${tab.id}`}
           className={cn(
             "px-4 py-2 rounded-md text-sm font-medium transition-colors",
-            currentTab === tab.id ? "bg-primary text-primary-foreground" : "bg-muted hover:bg-muted/80",
+            currentTab === tab.id ? "bg-primary text-primary-foreground" : "bg-muted hover:bg-muted/80 text-foreground",
           )}
+          aria-current={currentTab === tab.id ? "page" : undefined}
         >
           {tab.label}
         </Link>

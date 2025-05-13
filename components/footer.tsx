@@ -1,4 +1,24 @@
+"use client"
+
+import Link from "next/link"
+import { usePathname, useSearchParams } from "next/navigation"
+import { cn } from "@/lib/utils"
+
 export function Footer() {
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  const legalTab = searchParams.get("tab") || "terminos"
+
+  // Función para verificar si un enlace legal está activo
+  const isLegalLinkActive = (tab: string) => {
+    return pathname === "/legal" && legalTab === tab
+  }
+
+  // Función para verificar si un enlace de producto está activo
+  const isProductLinkActive = (path: string) => {
+    return pathname === path
+  }
+
   return (
     <footer className="bg-white dark:bg-gray-900 border-t dark:border-gray-800 py-12">
       <div className="container mx-auto px-4">
@@ -15,28 +35,46 @@ export function Footer() {
             <h3 className="font-bold mb-4 dark:text-white">Producto</h3>
             <ul className="space-y-2">
               <li>
-                <a
+                <Link
                   href="/solicitar"
-                  className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary text-sm"
+                  className={cn(
+                    "text-sm transition-colors",
+                    isProductLinkActive("/solicitar")
+                      ? "text-primary font-medium"
+                      : "text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary",
+                  )}
+                  aria-current={isProductLinkActive("/solicitar") ? "page" : undefined}
                 >
                   Solicitar préstamo
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/pagos"
-                  className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary text-sm"
+                  className={cn(
+                    "text-sm transition-colors",
+                    isProductLinkActive("/pagos")
+                      ? "text-primary font-medium"
+                      : "text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary",
+                  )}
+                  aria-current={isProductLinkActive("/pagos") ? "page" : undefined}
                 >
                   Realizar pagos
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/educacion"
-                  className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary text-sm"
+                  className={cn(
+                    "text-sm transition-colors",
+                    isProductLinkActive("/educacion")
+                      ? "text-primary font-medium"
+                      : "text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary",
+                  )}
+                  aria-current={isProductLinkActive("/educacion") ? "page" : undefined}
                 >
                   Educación financiera
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -45,36 +83,60 @@ export function Footer() {
             <h3 className="font-bold mb-4 dark:text-white">Legal</h3>
             <ul className="space-y-2">
               <li>
-                <a
+                <Link
                   href="/legal?tab=terminos"
-                  className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary text-sm"
+                  className={cn(
+                    "text-sm transition-colors",
+                    isLegalLinkActive("terminos")
+                      ? "text-primary font-medium"
+                      : "text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary",
+                  )}
+                  aria-current={isLegalLinkActive("terminos") ? "page" : undefined}
                 >
                   Términos y condiciones
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/legal?tab=privacidad"
-                  className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary text-sm"
+                  className={cn(
+                    "text-sm transition-colors",
+                    isLegalLinkActive("privacidad")
+                      ? "text-primary font-medium"
+                      : "text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary",
+                  )}
+                  aria-current={isLegalLinkActive("privacidad") ? "page" : undefined}
                 >
                   Política de privacidad
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/legal?tab=contrato"
-                  className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary text-sm"
+                  className={cn(
+                    "text-sm transition-colors",
+                    isLegalLinkActive("contrato")
+                      ? "text-primary font-medium"
+                      : "text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary",
+                  )}
+                  aria-current={isLegalLinkActive("contrato") ? "page" : undefined}
                 >
                   Contrato de préstamo
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/legal?tab=cookies"
-                  className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary text-sm"
+                  className={cn(
+                    "text-sm transition-colors",
+                    isLegalLinkActive("cookies")
+                      ? "text-primary font-medium"
+                      : "text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary",
+                  )}
+                  aria-current={isLegalLinkActive("cookies") ? "page" : undefined}
                 >
                   Política de cookies
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

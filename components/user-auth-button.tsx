@@ -13,7 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { User, LogOut, CreditCard, Settings, Bell, UserCircle } from "lucide-react"
+import { User, LogOut, CreditCard, Settings, Bell, UserCircle, Users } from "lucide-react"
 
 interface UserAuthButtonProps {
   className?: string
@@ -110,6 +110,18 @@ export function UserAuthButton({ className = "" }: UserAuthButtonProps) {
           <Link href="/pagos" className="cursor-pointer">
             <CreditCard className="mr-2 h-4 w-4" />
             <span>Mis pagos</span>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link href="/reportes" className="cursor-pointer">
+            <CreditCard className="mr-2 h-4 w-4" />
+            <span>Reportes financieros</span>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link href="/referidos" className="cursor-pointer">
+            <Users className="mr-2 h-4 w-4" />
+            <span>Programa de referidos</span>
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>

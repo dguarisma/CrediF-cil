@@ -1,65 +1,16 @@
 "use client"
-
-import { useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
+import { LegalTabLinks } from "@/components/legal-tab-links"
 
 export default function LegalPage() {
   const searchParams = useSearchParams()
-  const [activeTab, setActiveTab] = useState("terminos")
-
-  useEffect(() => {
-    const tab = searchParams.get("tab")
-    if (tab && ["terminos", "privacidad", "contrato", "cookies"].includes(tab)) {
-      setActiveTab(tab)
-    }
-  }, [searchParams])
-
-  const handleTabClick = (tab: string) => {
-    setActiveTab(tab)
-    // Actualizar la URL sin recargar la página
-    const url = new URL(window.location.href)
-    url.searchParams.set("tab", tab)
-    window.history.pushState({}, "", url.toString())
-  }
+  const activeTab = searchParams.get("tab") || "terminos"
 
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">Legal</h1>
 
-      <div className="flex flex-wrap gap-2 mb-8 border-b">
-        <button
-          onClick={() => handleTabClick("terminos")}
-          className={`px-4 py-2 text-sm font-medium ${
-            activeTab === "terminos" ? "border-b-2 border-primary text-primary" : "text-gray-600 dark:text-gray-400"
-          }`}
-        >
-          Términos y condiciones
-        </button>
-        <button
-          onClick={() => handleTabClick("privacidad")}
-          className={`px-4 py-2 text-sm font-medium ${
-            activeTab === "privacidad" ? "border-b-2 border-primary text-primary" : "text-gray-600 dark:text-gray-400"
-          }`}
-        >
-          Política de privacidad
-        </button>
-        <button
-          onClick={() => handleTabClick("contrato")}
-          className={`px-4 py-2 text-sm font-medium ${
-            activeTab === "contrato" ? "border-b-2 border-primary text-primary" : "text-gray-600 dark:text-gray-400"
-          }`}
-        >
-          Contrato de préstamo
-        </button>
-        <button
-          onClick={() => handleTabClick("cookies")}
-          className={`px-4 py-2 text-sm font-medium ${
-            activeTab === "cookies" ? "border-b-2 border-primary text-primary" : "text-gray-600 dark:text-gray-400"
-          }`}
-        >
-          Política de cookies
-        </button>
-      </div>
+      <LegalTabLinks className="mb-8" />
 
       <div className="prose dark:prose-invert max-w-none">
         {activeTab === "terminos" && (
@@ -82,18 +33,14 @@ export default function LegalPage() {
 
             <h3>3. Servicios de Préstamo</h3>
             <p>
-              CrediFácil ofrece servicios de microcréditos y préstamos personales de rápida aprobación. Los montos
-              oscilan entre [monto mínimo] y [monto máximo], con plazos de devolución flexibles de [plazo mínimo] a
-              [plazo máximo]. Las tasas de interés y condiciones específicas están sujetas a evaluación crediticia
-              individual y se presentarán claramente antes de la aceptación del préstamo.
+              CrediFácil ofrece servicios de préstamos personales. Los montos, tasas de interés y plazos están sujetos a
+              evaluación crediticia y pueden variar según el perfil del usuario.
             </p>
 
-            <h3>4. Proceso de Solicitud y Aprobación</h3>
+            <h3>4. Responsabilidades del Usuario</h3>
             <p>
-              El proceso de solicitud se realiza completamente en línea a través de nuestra aplicación. La verificación
-              de identidad requiere documentación válida y puede incluir tecnología de reconocimiento facial. Las
-              decisiones de préstamo se basan en múltiples factores, incluyendo pero no limitado a historial crediticio,
-              ingresos verificables y capacidad de pago.
+              Usted es responsable de mantener la confidencialidad de su cuenta y contraseña. Debe proporcionarnos
+              información precisa y actualizada durante el proceso de registro y solicitud de préstamo.
             </p>
 
             <h3>5. Modificaciones</h3>
@@ -115,13 +62,6 @@ export default function LegalPage() {
               Recopilamos información personal como nombre, dirección, número de identificación, información de
               contacto, datos financieros y laborales, y otra información necesaria para evaluar solicitudes de
               préstamo.
-            </p>
-
-            <h3>1.1 Datos Biométricos</h3>
-            <p>
-              Para verificar su identidad, podemos recopilar datos biométricos como imágenes faciales o huellas
-              dactilares. Estos datos son procesados con su consentimiento explícito y utilizados exclusivamente para
-              prevenir fraudes y verificar su identidad durante el proceso de solicitud y acceso a la cuenta.
             </p>
 
             <h3>2. Uso de la Información</h3>
@@ -184,21 +124,6 @@ export default function LegalPage() {
             <p>
               El incumplimiento de los pagos puede resultar en cargos por mora, informes negativos a bureaus de crédito
               y acciones legales para recuperar el monto adeudado.
-            </p>
-
-            <h3>6. Educación Financiera</h3>
-            <p>
-              Como parte de nuestro compromiso con la salud financiera de nuestros usuarios, CrediFácil proporciona
-              recursos educativos y herramientas para mejorar la comprensión financiera. El Prestatario reconoce la
-              importancia de utilizar los préstamos de manera responsable y se compromete a revisar los materiales
-              educativos proporcionados.
-            </p>
-
-            <h3>7. Programa de Beneficios</h3>
-            <p>
-              CrediFácil ofrece un programa de beneficios para usuarios que demuestren buen comportamiento de pago. Los
-              usuarios que realicen sus pagos puntualmente podrán acceder a mejores condiciones en préstamos futuros,
-              incluyendo tasas preferenciales y montos mayores según su historial.
             </p>
           </div>
         )}
