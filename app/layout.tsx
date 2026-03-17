@@ -17,7 +17,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "CrediFácil - Préstamos Personales",
   description: "Solicita préstamos personales de forma rápida y segura con CrediFácil",
-    generator: 'v0.dev'
+    generator: 'v0.app'
 }
 
 export default function RootLayout({

@@ -152,7 +152,7 @@ export function Footer() {
         </div>
 
         <div className="border-t dark:border-gray-800 mt-8 pt-8 text-center text-gray-600 dark:text-gray-400 text-sm">
-          <p>© {new Date().getFullYear()} CrediFácil. Todos los derechos reservados.</p>
+          <p>© 2025 CrediFácil. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>
