@@ -168,7 +168,7 @@ export default function Bienvenida() {
 
       {/* Footer */}
       <footer className="py-4 text-center text-white/80 text-sm">
-        <p>© {new Date().getFullYear()} CrediFácil. Todos los derechos reservados.</p>
+        <p>© 2025 CrediFácil. Todos los derechos reservados.</p>
       </footer>
 
       {/* Componentes de onboarding */}

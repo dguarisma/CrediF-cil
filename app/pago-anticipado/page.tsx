@@ -1,16 +1,16 @@
 "use client"
 
 import { useState } from "react"
-import { useRouter } from "next/navigation"
-import { Navbar } from "@/components/navbar"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Tabs, TabsContent } from "@/components/ui/tabs"
-import { CreditCard, Landmark, Wallet, CheckCircle, AlertCircle, Calculator } from "lucide-react"
-import { Slider } from "@/components/ui/slider"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Navbar } from "@/components/navbar"
+import { CreditCard, Landmark, Wallet, AlertCircle, Copy, Check } from "lucide-react"
 import { useAuth } from "@/components/auth-provider"
 import { GuideAvatar } from "@/components/onboarding/guide-avatar"
 
@@ -86,7 +86,7 @@ export default function PagoAnticipado() {
                   </div>
                   <div className="flex justify-between mb-2">
                     <span className="text-gray-600">Fecha:</span>
-                    <span>{new Date().toLocaleDateString()}</span>
+                    <span>{new Date().toLocaleDateString('es-ES')}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Método de pago:</span>
@@ -135,12 +135,10 @@ export default function PagoAnticipado() {
                           <div className="flex items-center justify-between">
                             <Label htmlFor="monto-pago">Monto a pagar</Label>
                             <div className="flex items-center gap-2">
-                              <input
-                                type="checkbox"
+                              <Checkbox
                                 id="monto-personalizado"
                                 checked={montoPersonalizado}
-                                onChange={() => setMontoPersonalizado(!montoPersonalizado)}
-                                className="rounded border-gray-300"
+                                onCheckedChange={(checked) => setMontoPersonalizado(checked === true)}
                               />
                               <Label htmlFor="monto-personalizado" className="text-sm font-normal">
                                 Monto personalizado

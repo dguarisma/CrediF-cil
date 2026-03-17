@@ -67,7 +67,7 @@ export default function Pagos() {
                   </div>
                   <div className="flex justify-between mb-2">
                     <span className="text-gray-600">Fecha:</span>
-                    <span>{new Date().toLocaleDateString()}</span>
+                    <span>{new Date().toLocaleDateString('es-ES')}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Método de pago:</span>

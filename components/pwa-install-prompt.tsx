@@ -45,9 +45,7 @@ export function PWAInstallPrompt() {
 
     // Esperar a que el usuario responda al prompt
     const { outcome } = await deferredPrompt.userChoice
-    if (typeof window !== "undefined") {
-      console.log(`User response to the install prompt: ${outcome}`)
-    }
+    console.log(`User response to the install prompt: ${outcome}`)
 
     // Limpiar el evento guardado
     setDeferredPrompt(null)

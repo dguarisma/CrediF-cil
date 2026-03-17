@@ -164,7 +164,7 @@ export default function CalculadoraPrestamos() {
     ctx.fillStyle = "#94A3B8"
     ctx.textAlign = "center"
     ctx.font = `${smallTextSize} Arial`
-    ctx.fillText(`Generado el ${new Date().toLocaleDateString()}`, canvas.width / 2, canvas.height - 20)
+    ctx.fillText(`Generado el ${new Date().toLocaleDateString('es-ES')}`, canvas.width / 2, canvas.height - 20)
 
     return canvas.toDataURL("image/png")
   }
