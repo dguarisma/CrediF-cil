@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
 import { useCookieConsent } from "@/contexts/cookie-consent-context"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 
@@ -119,18 +120,16 @@ export function CookieConsent() {
                 <h4 className="font-medium text-gray-900">Cookies necesarias</h4>
                 <p className="text-sm text-gray-500">Requeridas para el funcionamiento básico del sitio.</p>
               </div>
-              <input type="checkbox" checked disabled className="h-4 w-4" />
+              <Checkbox checked disabled />
             </div>
             <div className="flex items-center justify-between">
               <div>
                 <h4 className="font-medium text-gray-900">Cookies de preferencias</h4>
                 <p className="text-sm text-gray-500">Permiten recordar información para personalizar su experiencia.</p>
               </div>
-              <input
-                type="checkbox"
+              <Checkbox
                 checked={preferences}
-                onChange={(e) => setPreferences(e.target.checked)}
-                className="h-4 w-4"
+                onCheckedChange={(checked) => setPreferences(checked === true)}
               />
             </div>
             <div className="flex items-center justify-between">
@@ -138,11 +137,9 @@ export function CookieConsent() {
                 <h4 className="font-medium text-gray-900">Cookies estadísticas</h4>
                 <p className="text-sm text-gray-500">Nos ayudan a entender cómo interactúa con el sitio.</p>
               </div>
-              <input
-                type="checkbox"
+              <Checkbox
                 checked={statistics}
-                onChange={(e) => setStatistics(e.target.checked)}
-                className="h-4 w-4"
+                onCheckedChange={(checked) => setStatistics(checked === true)}
               />
             </div>
             <div className="flex items-center justify-between">
@@ -150,11 +147,9 @@ export function CookieConsent() {
                 <h4 className="font-medium text-gray-900">Cookies de marketing</h4>
                 <p className="text-sm text-gray-500">Utilizadas para mostrarle anuncios relevantes.</p>
               </div>
-              <input
-                type="checkbox"
+              <Checkbox
                 checked={marketing}
-                onChange={(e) => setMarketing(e.target.checked)}
-                className="h-4 w-4"
+                onCheckedChange={(checked) => setMarketing(checked === true)}
               />
             </div>
           </div>
